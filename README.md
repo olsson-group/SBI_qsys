@@ -1,6 +1,8 @@
 # Simulation-Based Quantum System Inference with Neural Posterior Estimation
 
-> **Note:** The code will be further cleaned up before the paper is published.
+> **Note:** The repo will be further cleaned up before the paper is published.
+
+The data and models can be found at \url{https://doi.org/10.5281/zenodo.23242047}.
 
 ## Contact
 
