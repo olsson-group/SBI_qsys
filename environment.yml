@@ -1,0 +1,32 @@
+# Environment for sbi_dt, sbi_paulinoise, sbi_pec_zne, sbi_qst, sbi_rydberg and benchmark_simulator.
+#
+#   conda env create -f environment.yml && conda activate sbi_qsys
+#
+# Only direct dependencies are listed; pip resolves the rest (sbi brings nflows, scikit-learn, skorch,
+# tensorboard, pillow; qiskit brings rustworkx, sympy, ...).
+#   - numpy stays below 2 because torch 2.1.2 is built against NumPy 1.x.
+#   - torch 2.1.2 from PyPI is the CUDA 12.1 build on Linux and the CPU build on macOS.
+#   - qiskit-aer-gpu (Linux, CUDA 12) and qiskit-aer both provide the qiskit_aer package, so only one is
+#     installed: aer-gpu on Linux (it also runs on CPU), plain aer elsewhere.
+#   - PyMuPDF is optional: benchmark_simulator uses it to read the palette of a reference PDF.
+
+name: sbi_qsys
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pip
+  - ipykernel
+  - pip:
+      - numpy==1.26.4
+      - scipy==1.11.1
+      - matplotlib==3.10.9
+      - tqdm==4.67.3
+      - torch==2.1.2
+      - sbi==0.26.1
+      - zuko==1.6.0
+      - qiskit==1.4.5
+      - qiskit-aer-gpu==0.15.1; sys_platform == "linux"
+      - qiskit-aer==0.15.1; sys_platform != "linux"
+      - stim==1.15.0
+      - PyMuPDF==1.26.3
